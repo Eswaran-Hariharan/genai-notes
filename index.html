@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>GenAI Interview Notes</title>
+  <meta name="description" content="A 24-part study guide covering GenAI fundamentals, LLMs, transformers, RAG, agents, MCP, AWS Bedrock, security, system design, and more." />
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="topbar"><a href="index.html">📘 GenAI Interview Notes</a></div>
+
+  <section class="hero">
+    <h1>GenAI Interview Notes</h1>
+    <p>A 24-part study guide — from AI fundamentals and transformers to RAG, agents, MCP, AWS Bedrock, security, and system design. Pick a note to start.</p>
+  </section>
+
+  <main class="grid" id="grid"><!-- cards injected --></main>
+
+  <footer>Published with GitHub Pages · Rendered client-side from Markdown.</footer>
+
+  <script src="notes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+  <script type="module">
+    import { buildLanding } from './app.js';
+    buildLanding();
+  </script>
+</body>
+</html>
