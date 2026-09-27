@@ -5,24 +5,41 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GenAI Interview Notes</title>
   <meta name="description" content="A 24-part study guide covering GenAI fundamentals, LLMs, transformers, RAG, agents, MCP, AWS Bedrock, security, system design, and more." />
+  <script>
+    // Apply saved theme before paint to avoid flash
+    (function(){ try { if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark'); } catch(e){} })();
+  </script>
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
-  <div class="topbar"><a href="index.html">📘 GenAI Interview Notes</a></div>
+  <div class="topbar">
+    <a href="index.html" class="brand">📘 GenAI Interview Notes</a>
+    <span class="spacer"></span>
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
+  </div>
 
   <section class="hero">
     <h1>GenAI Interview Notes</h1>
-    <p>A 24-part study guide — from AI fundamentals and transformers to RAG, agents, MCP, AWS Bedrock, security, and system design. Pick a note to start.</p>
+    <p>A 24-part study guide — from AI fundamentals and transformers to RAG, agents, MCP, AWS Bedrock, security, and system design.</p>
   </section>
 
-  <main class="grid" id="grid"><!-- cards injected --></main>
+  <section class="map-wrap">
+    <object type="image/svg+xml" data="concept-map.svg" class="concept-map" aria-label="Concept map linking all notes"></object>
+  </section>
+
+  <div class="search-bar">
+    <input type="search" id="search" placeholder="🔎 Search notes… (e.g. RAG, agents, Bedrock)" autocomplete="off" />
+  </div>
+
+  <main class="groups" id="groups"><!-- grouped cards injected --></main>
 
   <footer>Published with GitHub Pages · Rendered client-side from Markdown.</footer>
 
   <script src="notes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script type="module">
-    import { buildLanding } from './app.js';
+    import { buildLanding, initTheme } from './app.js';
+    initTheme();
     buildLanding();
   </script>
 </body>

@@ -4,37 +4,48 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>GenAI Notes</title>
+  <script>
+    (function(){ try { if (localStorage.getItem('theme') === 'dark') document.documentElement.classList.add('dark'); } catch(e){} })();
+  </script>
   <link rel="preconnect" href="https://cdn.jsdelivr.net" />
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" />
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css" id="hljs-light" />
   <link rel="stylesheet" href="styles.css" />
 </head>
 <body>
+  <div class="progress" id="progress"></div>
   <div class="topbar">
     <button class="menu-btn" id="menuBtn" aria-label="Toggle contents">☰</button>
-    <a href="index.html">📘 GenAI Interview Notes</a>
+    <a href="index.html" class="brand">📘 GenAI Interview Notes</a>
+    <span class="spacer"></span>
+    <button class="theme-btn" id="themeBtn" aria-label="Toggle dark mode" title="Toggle dark mode">🌙</button>
   </div>
 
   <div class="layout">
     <aside class="sidebar" id="sidebar">
+      <div class="side-search"><input type="search" id="sideSearch" placeholder="🔎 Filter notes…" autocomplete="off" /></div>
       <h3>Contents</h3>
       <ol id="toc"><!-- injected --></ol>
     </aside>
+
     <div class="content">
       <article class="wrap" id="content">Loading…</article>
       <footer>Published with GitHub Pages · Rendered client-side from Markdown.</footer>
     </div>
+
+    <aside class="onthispage" id="onthispage" aria-label="On this page">
+      <h3>On this page</h3>
+      <ul id="minitoc"></ul>
+    </aside>
   </div>
 
   <script src="notes.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
   <script type="module">
-    import { loadNote } from './app.js';
+    import { loadNote, initTheme, initReaderChrome } from './app.js';
+    initTheme();
     await loadNote();
-    const btn = document.getElementById('menuBtn');
-    const sb = document.getElementById('sidebar');
-    btn?.addEventListener('click', () => sb.classList.toggle('open'));
-    sb?.addEventListener('click', (e) => { if (e.target.closest('a')) sb.classList.remove('open'); });
+    initReaderChrome();
   </script>
 </body>
 </html>
